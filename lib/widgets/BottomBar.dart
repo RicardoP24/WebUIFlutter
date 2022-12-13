@@ -1,0 +1,155 @@
+import 'package:ui_test/widgets/Bottom_bar_column.dart';
+import 'package:ui_test/widgets/info_text.dart';
+import 'package:flutter/material.dart';
+
+class BottomBar extends StatelessWidget {
+  const BottomBar({
+    Key? key,
+  }) : super(key: key);
+
+  static const Color gradientStartColor = Color(0xff11998e);
+  static const Color gradientEndColor = Color(0xff0575E6);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(0.0)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: gradientStartColor,
+            offset: Offset(1.0, 6.0),
+            blurRadius: 1.0,
+          ),
+          BoxShadow(
+            color: gradientEndColor,
+            offset: Offset(1.0, 6.0),
+            blurRadius: 1.0,
+          ),
+        ],
+        gradient: LinearGradient(
+            colors: [
+              gradientStartColor,
+              gradientEndColor
+            ],
+            begin: FractionalOffset(0.2, 0.2),
+            end: FractionalOffset(1.0, 1.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.clamp),
+      ),
+      padding: EdgeInsets.all(30),
+      //color: Colors.blueGrey[900],
+      child: MediaQuery.of(context).size.width<=800?Column(
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              BottomBarColumn(
+                heading: 'SOBRE',
+                s1: 'Contact Us',
+                s2: 'About Us',
+                s3: 'Careers',
+              ),
+              BottomBarColumn(
+                heading: 'AJUDA',
+                s1: 'Pagamentos',
+                s2: 'About Us',
+                s3: 'Careers',
+              ),
+              BottomBarColumn(
+                heading: 'REDES SOCIAIS',
+                s1: 'Twitter',
+                s2: 'Facebook',
+                s3: 'Linkedin',
+              ),
+
+            ],
+          ),
+          Divider(
+            color: Colors.white,
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Copyright © 2022 | GoldenService',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ):Column(
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              BottomBarColumn(
+                heading: 'SOBRE',
+                s1: 'Contact Us',
+                s2: 'About Us',
+                s3: 'Careers',
+              ),
+              BottomBarColumn(
+                heading: 'AJUDA',
+                s1: 'Pagamentos',
+                s2: 'About Us',
+                s3: 'Careers',
+              ),
+              BottomBarColumn(
+                heading: 'REDES SOCIAIS',
+                s1: 'Twitter',
+                s2: 'Facebook',
+                s3: 'Linkedin',
+              ),
+              Container(
+                color: Colors.white,
+                width: 2,
+                height: 150,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  InfoText(
+                    type: 'Email',
+                    text: 'geral@goldenservice.com',
+                  ),
+                  SizedBox(height: 5),
+                  InfoText(
+                    type: 'Endereço',
+                    text: 'Alto dos Moinhos , n8',
+                  ),
+                  SizedBox(height: 5),
+
+                  InfoText(
+                    type: 'Telemóvel',
+                    text: '+351 9XX XXX XXX',
+                  ),
+                  SizedBox(height: 5),
+
+                  InfoText(
+                    type: 'Telefone',
+                    text: '+351 9XX XXX XXX',
+                  )
+                ],
+              ),
+
+
+            ],
+          ),
+          Divider(
+            color: Colors.white,
+          ),
+          SizedBox(height: 20),
+           Text(
+            'Copyright © 2022 | GoldenService',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
